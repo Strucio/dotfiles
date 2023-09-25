@@ -1,0 +1,27 @@
+#
+# Defines environment variables.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# Ensure that a non-login, non-interactive shell has a defined environment.
+if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprofile"
+fi
+
+# Rust Path init
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Fasd init
+if command -v fasd > /dev/null; then
+    eval "$(fasd --init auto)"
+fi
+
+# Android SDK environment variable
+export ANDROID_HOME=/home/kalmbach/Android/Sdk
+
+# Optional Android tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/emulator

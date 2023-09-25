@@ -1,0 +1,61 @@
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000000000
+SAVEHIST=1000000000
+setopt autocd
+unsetopt beep
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/kalmbach/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+# Fast Syntax Highlighting (F-Sy-H)
+source ~/fsh/fast-syntax-highlighting.plugin.zsh
+
+# Unsure if this is needed for fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Initialize fasd
+eval "$(fasd --init posix-alias zsh-hook zsh-wcomp)"
+
+# Alt left/right moves words
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
+
+# Alt up/down goes to beggining/end of line
+bindkey "^[[1;3A" beginning-of-line
+bindkey "^[[1;3B" end-of-line
+
+# Environment setup
+if [ -f ~/.env ]; then
+    source ~/.env
+fi
+
+# ALIASES
+if [ -f ~/.aliases ]; then
+    source ~/.aliases
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
