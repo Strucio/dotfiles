@@ -37,13 +37,13 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'spectrum' \
   'utility' \
-  'completion' \
-  'history-substring-search' \
-  'prompt' \
+  'node' \
   'git' \
-  'fasd' \
-  'autosuggestions' \
-  'syntax-highlighting'
+  'completion' \
+  'prompt' \
+  'syntax-highlighting' \
+  'history-substring-search' \
+  'autosuggestions'
 
 #
 # Autosuggestions
@@ -63,6 +63,9 @@ zstyle ':prezto:load' pmodule \
 #
 # Editor
 #
+
+# Set the characters that are considered to be part of a word.
+# zstyle ':prezto:module:editor' wordchars '*?_-.[]~&;!#$%^(){}<>'
 
 # Set the key mapping style to 'emacs' or 'vi'.
 zstyle ':prezto:module:editor' key-bindings 'emacs'
@@ -117,7 +120,7 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 # zstyle ':prezto:module:history-substring-search' case-sensitive 'yes'
 
 # Enable search for fuzzy matches.
-# zstyle ':prezto:module:history-substring-search' fuzzy 'yes'
+zstyle ':prezto:module:history-substring-search' fuzzy 'yes'
 
 # Enable search uniqueness.
 # zstyle ':prezto:module:history-substring-search' unique 'yes'

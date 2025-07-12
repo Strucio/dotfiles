@@ -10,10 +10,12 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# Customize to your needs...
+
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000000000
-SAVEHIST=1000000000
+HISTFILE=~/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=1000000
 setopt autocd
 unsetopt beep
 bindkey -e
@@ -26,21 +28,7 @@ compinit
 # End of lines added by compinstall
 
 # Fast Syntax Highlighting (F-Sy-H)
-source ~/fsh/fast-syntax-highlighting.plugin.zsh
-
-# Unsure if this is needed for fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Initialize fasd
-eval "$(fasd --init posix-alias zsh-hook zsh-wcomp)"
-
-# Alt left/right moves words
-bindkey "^[[1;3C" forward-word
-bindkey "^[[1;3D" backward-word
-
-# Alt up/down goes to beggining/end of line
-bindkey "^[[1;3A" beginning-of-line
-bindkey "^[[1;3B" end-of-line
+source ~/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 # Environment setup
 if [ -f ~/.env ]; then

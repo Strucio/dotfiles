@@ -10,14 +10,6 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
-# Rust Path init
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# Fasd init
-if command -v fasd > /dev/null; then
-    eval "$(fasd --init auto)"
-fi
-
 # Android SDK environment variable
 export ANDROID_HOME=$HOME/Android/Sdk
 
@@ -25,6 +17,3 @@ export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/emulator
-
-# krew PATH append
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
